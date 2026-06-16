@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Noise Scheduler"
+title:  "Noise Scheduler - Intuitive Approach - Part 1"
 date:   2026-06-14
 categories: jekyll update
 ---
@@ -134,6 +134,9 @@ $$
 {\bar{\alpha}_{t-1}}
 $$
 
-In the next post, we will build an intuition for noise schedulers and explore the tools and metrics used to understand signal preservation and noise injection throughout the diffusion process.
+In the next post, we will explore the tools and metrics used to understand signal preservation and noise injection throughout the diffusion process.
 
 
+Found a typo or technical inaccuracy? Please open an issue or submit a pull request on [GitHub]({{ site.github_repo}}).
+
+If you found this post helpful, consider giving the repository a ⭐.
