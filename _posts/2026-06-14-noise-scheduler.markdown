@@ -7,7 +7,7 @@ categories: jekyll update
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
 
-Have you ever been in a hilly area or a valley and watched the fog slowly appear and spread? It thickens, reducing visibility, and over time, the scenic view dissolves into whiteness. In the same way, a Noise Scheduler does this to an image over time. As the number of time steps increases, the variance of the Gaussian noise increases. Eventually, the image distribution converges toward a standard Gaussian distribution ($N(0,I)$). 
+Have you ever been in a hilly area or a valley and watched the fog slowly appear and spread? It thickens, reducing visibility, and over time, the scenic view dissolves into whiteness. In the same way, a Noise Scheduler does this to an image over time. As the number of time steps increases, the variance of the Gaussian noise increases. Eventually, the image distribution converges toward a standard Gaussian distribution ($$N(0,I)$$). 
 <div class="center-gif">
     <img src="{{ '/assets/gifs/fog.gif' | relative_url }}"
          alt="Fog analogy"
