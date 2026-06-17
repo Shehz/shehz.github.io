@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Noise Scheduler - Intuitive Approach - Part 1"
+title:  "Noise Scheduler - Intuitive Approach"
 date:   2026-06-14
 categories: jekyll update
 ---

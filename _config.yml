@@ -19,9 +19,10 @@
 # in the templates via {{ site.myvariable }}.
 github_repo: https://github.com/Shehz/shehz.github.io
 
-title: Notes
+title: Shehz AI Research Notes
 email:
 description: >- # this means to ignore newlines until "baseurl:"
+  Research notes on Diffusion Models, Explainable AI, Linear Algebra for ML.
   This space is dedicated to the process of aligning with impact and stepping into my reality as a distinguished researcher.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://shehz.github.io # the base hostname & protocol for your site, e.g. http://example.com
