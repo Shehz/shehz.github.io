@@ -2,7 +2,7 @@
 layout: post
 title:  "Noise Scheduler - Intuitive Approach"
 date:   2026-06-14
-categories: jekyll update
+categories:
 ---
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
