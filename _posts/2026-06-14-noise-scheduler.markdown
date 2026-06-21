@@ -26,11 +26,11 @@ To answer these questions, we should understand what happens in the diffusion mo
 - Reverse Diffusion: Generation begins with a sample of pure Gaussian Noise. The diffusion model predicts the noise present at each timestep and this predicted noise is removed to obtain a slightly less noisy image. This process is repeated iteratively across timestpes, gradually transforming the nosiy sample into a clean, realistic image.
 
 Therefore, for a diffusion model to predict the added noise effectively at every timestep, the noise scheduler must be carefully designed. the scheduler determines how much Gaussian Noise is added at each step of the forward diffusion process. 
-If the scheduler is purely designed, some timesteps may be difficult or redundant making the reverse diffusion process less effective and ultimately degrading the quality of generated images.
+If the scheduler is poorly designed, some timesteps may be difficult or redundant making the reverse diffusion process less effective and ultimately degrading the quality of generated images.
 
 To conclude, the scheduler is trying to balance two competing goals:
 - Add noise slowly enough that neighboring timesteps remain predictable and the denoising task is learnable.
-- Add noise fast enough that the forward process eventually transforms the data distribution into simple Gaussian distribution.
+- Add noise fast enough that the forward process eventually transforms the data distribution into standard Gaussian distribution.
 
 # What happens if noise is added slowly: 
 The consecutive timesteps becomes nearly identical. As a result, model repeatedely learns similar denoising operations across many timesteps, leading to redundant training. This can make the diffusion process inefficient and may require a larger number of timesteps to reach pure noise.
@@ -65,11 +65,6 @@ $$
 
 The noise variance increases linearly from $$\beta_{\text{start}}$$ to $$\beta_{\text{end}}$$ over $$T$$ timesteps.
 
-$$
-\beta_t = \beta_{\text{start}} +
-\frac{t}{T-1}
-\left(\beta_{\text{end}} - \beta_{\text{start}}\right)
-$$
 
 The corresponding signal retention factor is:
 
@@ -86,7 +81,7 @@ $$
 ## Cosine Scheduler 
 The authors of [Improved Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2102.09672) observed that the linear schedule worked well for higher resolution images. However, it was suboptimal for images of resolution 64x64 and 32x32. 
 
-Their analysis showed that the linear scheduler destroys image information too quickly during the later stages of the forward process. As a result, many of the time steps contains almost pure noise and contribute little to the learning process or the final image quality.
+Their analysis showed that the linear scheduler destroys image information too quickly during the early and middle stages of the forward process. As a result, many of the time steps contains almost pure noise and contribute little to the learning process or the final image quality.
 
 
 <figure style="text-align:center; margin:10px 0;">
@@ -104,7 +99,7 @@ Their analysis showed that the linear scheduler destroys image information too q
     </figcaption>
 </figure>
 
-To address this issue, the proposed Cosine noise scheduler was proposed. It introduces noise more grdually near the begining and end of the timeline while maintaining a relatively steady rate of information loss in the middle timesteps.
+To address this issue, the Cosine noise scheduler was proposed. It introduces noise more gradually near the begining and end of the timeline while maintaining a relatively steady rate of information loss in the middle timesteps.
 Instead of defining the noise variance directly, it specifies the cumulative signal preservation term i.e. $$\bar{\alpha}_t$$:
 
 $$
